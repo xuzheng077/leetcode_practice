@@ -8,22 +8,22 @@ import java.util.LinkedList;
  * @description 二叉树遍历
  */
 public class BinaryTreeTraverse {
-    //层序遍历 非递归
+    //层序遍历 非递归 也可以认为是广度优先遍历
     public static ArrayList<Node> layerTraverse(Node root){
         Node node;
         ArrayList<Node> list = new ArrayList<>();
-        LinkedList<Node> list1 = new LinkedList<>();
+        LinkedList<Node> queue = new LinkedList<>();
         if (root != null){
-            list1.push(root);
+            queue.push(root);
         }
-        while(!list1.isEmpty()){
-            node = list1.removeFirst();
+        while(!queue.isEmpty()){
+            node = queue.removeFirst();
             list.add(node);
             if (node.left !=null){
-                list1.addLast(node.left);
+                queue.addLast(node.left);
             }
             if(node.right !=null){
-                list1.addLast(node.right);
+                queue.addLast(node.right);
             }
         }
         return list;
